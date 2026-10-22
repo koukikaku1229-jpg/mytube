@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyTube</title>
+<style>
+body {
+  margin: 0;
+  padding: 20px;
+  background: #111;
+  color: white;
+  font-family: sans-serif;
+}
+h1 { color: #ff3333; }
+input, button {
+  box-sizing: border-box;
+  padding: 12px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
+}
+input { width: 70%; }
+button {
+  background: #ff3333;
+  color: white;
+}
+#player {
+  margin-top: 20px;
+}
+iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 12px;
+}
+</style>
+</head>
+<body>
+<h1>🔴 MyTube</h1>
+<p>自分だけの動画サイト！</p>
+
+<input id="videoId" placeholder="YouTubeの動画ID">
+<button onclick="playVideo()">再生</button>
+
+<div id="player"></div>
+
+<script>
+function playVideo() {
+  const id = document.getElementById("videoId").value.trim();
+
+  if (!/^[a-zA-Z0-9_-]{11}$/.test(id)) {
+    alert("11文字のYouTube動画IDを入力してね！");
+    return;
+  }
+
+  document.getElementById("player").innerHTML =
+    '<iframe src="https://www.youtube.com/embed/' + id +
+    '" title="YouTube動画プレーヤー" allowfullscreen></iframe>';
+}
+</script>
+</body>
+</html>
